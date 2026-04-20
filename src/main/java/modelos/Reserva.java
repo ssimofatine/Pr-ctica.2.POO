@@ -2,6 +2,7 @@ package modelos;
 
 import java.time.LocalDate;
 import java.time.LocalTime;
+import Enums.EstadoReserva;
 
 public class Reserva {
 
