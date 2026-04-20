@@ -34,6 +34,7 @@ public class Restaurante {
         return clientes;
     }
 
+    //getReservas()
     public List<Reserva> getReservas() {
         return reservas;
     }
@@ -65,15 +66,8 @@ public class Restaurante {
             }
         }
     }
-    //getReservas()
 
-    public Reserva getReservas(){
-        for (Reserva reserva : reservas){
-            System.out.println(reserva);
-            return reserva;
-        }
-        return null;
-    }
+
     //toString() que muestre los clientes y reservas almacenados.
 
 
