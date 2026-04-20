@@ -60,11 +60,10 @@ public class Restaurante {
 
     //getClientePorDni(String dni)
     public void getClientePorDni(String dni){
-        for (Cliente cliente : clientes){
-            if (cliente.getDni().equals(dni)){
-                System.out.println(cliente);
-            }
-        }
+        clientes.stream()
+                .filter(cliente -> cliente.getDni().equals(dni))
+                .findFirst()
+                .ifPresent(System.out::println);
     }
 
 
