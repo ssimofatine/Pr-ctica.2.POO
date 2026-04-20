@@ -59,12 +59,12 @@ public class Restaurante {
 
 
     //getClientePorDni(String dni)
-    public void getClientePorDni(String dni){
-        clientes.stream()
+    public Cliente getClientePorDni(String dni){
+        return clientes.stream()
                 .filter(cliente -> cliente.getDni().equals(dni))
                 .findFirst()
-                .ifPresent(System.out::println);
-        //
+                .orElse(null);
+
     }
 
 
