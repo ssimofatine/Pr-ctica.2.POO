@@ -12,6 +12,8 @@ import lombok.*;
 
 public class Reserva {
 
+    public static long contador = 1;//excepto id , que será incremental
+
     //Atributos
     //long id
     //Cliente cliente
@@ -31,8 +33,19 @@ public class Reserva {
     private EstadoReserva estado;
     private String zona;
 
+    public Reserva(Cliente cliente, LocalDate fecha, LocalTime hora, int numPersonas, double importePrevisto, EstadoReserva estado, String zona) {
+        this.cliente = cliente;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.numPersonas = numPersonas;
+        this.importePrevisto = importePrevisto;
+        this.estado = estado;
+        this.zona = zona;
+        this.id = contador++;//excepto id , que será incremental
+    }
 
-    //Constructor con todos los atributos excepto id , que será incremental.
+
+//Constructor con todos los atributos excepto id , que será incremental.
     //Getters y setters.
     //toString() que muestre, por ejemplo:
     //ID: 1 | 12345678A | 2026-04-10 21:30 | 4 pers. | 80.0€ | CONFIRMADA | terraza
