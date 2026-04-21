@@ -155,5 +155,23 @@ public class RestauranteService {
     }
 
 
+    //13. Clientes ordenados alfabéticamente
+    //getClientes(): mostrar la lista de clientes ordenada por nombre.
+
+
+
+    //14. Reservas futuras
+    //getReservasFuturasAgrupadasPorFecha(): crear un mapa donde la clave sea la fecha y el valor
+    //sea la lista de reservas de ese día, para las reservas a partir de hoy. Las reservas deben estar
+    //previamente ordenadas por fecha.
+
+
+
+
+
+    //15. Porcentaje de reservas canceladas
+    //getPorcentajeCanceladas(): calcular qué porcentaje del total de reservas están canceladas.
+
+
 
 }
