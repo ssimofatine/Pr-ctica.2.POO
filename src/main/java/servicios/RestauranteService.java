@@ -147,6 +147,12 @@ public class RestauranteService {
     //mínimo
     //suma
 
+    public IntSummaryStatistics getEstadisticasNumPersonas() {
+        return restaurante.getReservas().stream()
+                .mapToInt(Reserva::getNumPersonas)
+                //no se puedo uso (sum) solo summaryStatistics
+                .summaryStatistics();
+    }
 
 
 
