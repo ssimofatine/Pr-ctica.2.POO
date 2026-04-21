@@ -56,10 +56,96 @@ public class RestauranteService {
     //de mayor a menor número de personas en una fecha determinada.
     public List<Reserva> getReservasOrdenadas(LocalDate fecha){
         return restaurante.getReservas().stream()
-                .filter(r -> r.getEstado() == EstadoReserva.CONFIRMADA && r.getFecha() == fecha )
+                //no canceladas
+                .filter(r -> r.getEstado() != EstadoReserva.CANCELADA && r.getFecha() == fecha )
+                //de mayor a menor número de personas (reversed)
                 .sorted(Comparator.comparing(Reserva::getNumPersonas).reversed())
                 .collect(Collectors.toList());
     }
+
+
+
+    //5. Clientes con reservas grandes
+    //getClientesReservasGrandes(): obtener los nombres de los clientes que tengan alguna reserva
+    //de más de 6 personas
+
+    public List<String> getClientesReservasGrandes() {
+        return restaurante.getReservas().stream()
+                .filter(r -> r.getNumPersonas() > 6)
+                .map(r -> r.getCliente().getNombre())
+                .distinct()
+                .collect(Collectors.toList());
+    }
+
+
+
+    //6. Total previsto de reservas atendidas
+    //getTotalPrevistoAtendidas(): calcular la suma total de importePrevisto de todas las reservas
+    //con estado ATENDIDA .
+    public double getTotalPrevistoAtendidas() {
+        return restaurante.getReservas().stream()
+                .filter(r -> r.getEstado() == EstadoReserva.ATENDIDA)
+                .mapToDouble(Reserva::getImportePrevisto)
+                .sum();
+    }
+
+    //7. Número de reservas por estado
+    //getReservasPorEstado(): crear un mapa donde la clave sea el estado de la reserva y el valor sea
+    //el número total de reservas de ese estado.
+    public Map<EstadoReserva, Long> getReservasPorEstado() {
+        return restaurante.getReservas().stream()
+                .collect(Collectors.groupingBy(Reserva::getEstado, Collectors.counting()));
+    }
+
+
+
+    //8. Número de reservas por zona
+    //getReservasPorZona(): crear un mapa donde la clave sea la zona ( terraza , salon , barra , etc.)
+    //y el valor sea el número de reservas de esa zona.
+
+    public Map<String, Long> getReservasPorZona() {
+        return restaurante.getReservas().stream()
+                .collect(Collectors.groupingBy(Reserva::getZona, Collectors.counting()));
+    }
+
+
+
+    //9. Reservas agrupadas por fecha
+    //getReservasAgrupadasPorFecha(): crear un mapa donde la clave sea la fecha y el valor sea la
+    //lista de reservas de ese día.
+    public Map<LocalDate, List<Reserva>> getReservasAgrupadasPorFecha() {
+        return restaurante.getReservas().stream()
+                .collect(Collectors.groupingBy(Reserva::getFecha));
+    }
+
+
+
+    //10. Cliente con más reservas
+    //getClienteTop(): obtener el cliente que más reservas tiene en el restaurante.
+
+
+
+
+    //11. Recaudación prevista por fecha
+    //getTotalPrevistoAgrupadoPorFecha(): mostrar la suma del importe previsto de las reservas
+    //agrupada por fecha.
+    public Map<LocalDate, Double> getTotalPrevistoAgrupadoPorFecha() {
+        return restaurante.getReservas().stream()
+                .collect(Collectors.groupingBy(
+                        Reserva::getFecha,
+                        Collectors.summingDouble(Reserva::getImportePrevisto)
+                ));
+    }
+
+
+
+
+    //12. Estadísticas de comensales
+    //getEstadisticasNumPersonas(): obtener estadísticas sobre el número de personas por reserva:
+    //media
+    //máximo
+    //mínimo
+    //suma
 
 
 
