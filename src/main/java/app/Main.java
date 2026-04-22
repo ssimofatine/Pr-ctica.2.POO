@@ -28,12 +28,12 @@ public class Main {
 
         LocalDate hoy = LocalDate.now();
         LocalDate manana = hoy.plusDays(1);
-        LocalDate proximaSemana = hoy.plusDays(7);
+        LocalDate Semana = hoy.plusWeeks(7);
 
         miRestaurante.addReserva(new Reserva(c1, manana, LocalTime.of(14, 0), 4, 80.0, EstadoReserva.CONFIRMADA, "Zona bien"));
         miRestaurante.addReserva(new Reserva(c2, manana, LocalTime.of(14, 30), 2, 45.0, EstadoReserva.CONFIRMADA, "Zona muy bien"));
         miRestaurante.addReserva(new Reserva(c3, manana, LocalTime.of(21, 0), 8, 160.0, EstadoReserva.PENDIENTE, "Zona grande"));
-        miRestaurante.addReserva(new Reserva(c4, proximaSemana, LocalTime.of(21, 30), 3, 60.0, EstadoReserva.CANCELADA, "Zona pequeña"));
+        miRestaurante.addReserva(new Reserva(c4, Semana, LocalTime.of(21, 30), 3, 60.0, EstadoReserva.CANCELADA, "Zona pequeña"));
 
 
         RestauranteService servicio = new RestauranteService(miRestaurante);
