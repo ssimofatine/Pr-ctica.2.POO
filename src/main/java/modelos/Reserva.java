@@ -3,26 +3,32 @@ package modelos;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import Enums.EstadoReserva;
+
+
 import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
-
 public class Reserva {
 
-    public static long contador = 1;//excepto id , que será incremental
+    //id , que será incremental.
+    public static Long contador = 1L;
 
-    //Atributos
-    //long id
-    //Cliente cliente
-    //LocalDate fecha
-    //LocalTime hora
-    //int numPersonas
-    //double importePrevisto
-    //EstadoReserva estado
-    //String zona
+
+    /**
+     * Atributos
+     *
+     *
+     * long id
+     * Cliente cliente
+     * LocalDate fecha
+     * LocalTime hora
+     * int numPersonas
+     * double importePrevisto
+     * EstadoReserva estado
+     * String zona
+     */
 
     private long id;
     private Cliente cliente;
@@ -33,6 +39,13 @@ public class Reserva {
     private EstadoReserva estado;
     private String zona;
 
+
+    /**
+     * Métodos
+     *
+     * Constructor con todos los atributos excepto id , que será incremental.
+     */
+
     public Reserva(Cliente cliente, LocalDate fecha, LocalTime hora, int numPersonas, double importePrevisto, EstadoReserva estado, String zona) {
         this.cliente = cliente;
         this.fecha = fecha;
@@ -41,30 +54,27 @@ public class Reserva {
         this.importePrevisto = importePrevisto;
         this.estado = estado;
         this.zona = zona;
-        this.id = contador++;//excepto id , que será incremental
+        this.id = contador++;
     }
 
 
-//Constructor con todos los atributos excepto id , que será incremental.
-    //Getters y setters.
-    //toString() que muestre, por ejemplo:
-    //ID: 1 | 12345678A | 2026-04-10 21:30 | 4 pers. | 80.0€ | CONFIRMADA | terraza
 
+     /**
+     * toString() que muestre, por ejemplo:
+     * ID: 1 | 12345678A | 2026-04-10 21:30 | 4 pers. | 80.0€ | CONFIRMADA | terraza
+     */
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Reserva{");
-        sb.append("id=").append(id);
-        sb.append(", cliente=").append(cliente);
-        sb.append(", fecha=").append(fecha);
-        sb.append(", hora=").append(hora);
-        sb.append(", numPersonas=").append(numPersonas);
-        sb.append(", importePrevisto=").append(importePrevisto);
-        sb.append(", estado=").append(estado);
-        sb.append(", zona='").append(zona).append('\'');
+        sb.append("ID: ").append(id);
+        sb.append(" | ").append(cliente);
+        sb.append(" | ").append(fecha).append(" ").append(hora);
+        sb.append(" | ").append(numPersonas).append(" pers.");
+        sb.append(" | ").append(importePrevisto).append("€");
+        sb.append(" | ").append(estado);
+        sb.append(" | ").append(zona);
         sb.append('}');
         return sb.toString();
     }
-
-
 }

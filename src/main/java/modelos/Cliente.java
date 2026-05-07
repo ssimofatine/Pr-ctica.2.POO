@@ -1,48 +1,46 @@
 package modelos;
-
 import lombok.*;
 
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-
 public class Cliente {
-    //Clase Cliente
-    //Atributos
-    //String dni
-    //String nombre
-    //String telefono
-    //String email
-    //String ciudad
+    /**
+     * Clase Cliente
+     * Atributos
+     *
+     * String dni
+     * String nombre
+     * String telefono
+     * String email
+     * String ciudad
+     *
+     * Métodos
+     * Constructor con todos los atributos.
+     * Getters y setters.
+     * toString() que muestre, por ejemplo:
+     * DNI: 12345678A | Nombre: Ana Pérez | ana@email.com | 600123123 | Sevilla
+     */
 
     //Atributos
-
     private String dni;
     private String nombre;
     private String telefono;
     private String email;
-    private String cuidad;
+    private String ciudad;
 
 
-
-
-    //Métodos
-    //Constructor con todos los atributos.
-    //Getters y setters.
-
-
-
-    //toString() que muestre, por ejemplo:
+    // ToString Con StringBuffer
 
 
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("Cliente{");
-        sb.append("dni='").append(dni).append('\'');
-        sb.append(", nombre='").append(nombre).append('\'');
-        sb.append(", telefono='").append(telefono).append('\'');
-        sb.append(", email='").append(email).append('\'');
-        sb.append(", cuidad='").append(cuidad).append('\'');
+        sb.append("DNI: ").append(dni);
+        sb.append(" | Nombre: ").append(nombre);
+        sb.append(" | ").append(telefono);
+        sb.append(" | ").append(email);
+        sb.append(" | ").append(ciudad);
         sb.append('}');
         return sb.toString();
     }
